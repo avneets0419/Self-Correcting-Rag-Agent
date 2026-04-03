@@ -3,7 +3,7 @@ langgraph==0.3.21
 langchain-groq==0.3.2
 langchain-community==0.3.23
 sentence-transformers==3.4.1
-faiss-cpu==1.10.0
+faiss-cpu==1.13.2
 tavily-python==0.5.0
 pypdf2==3.0.1
 streamlit==1.44.1
