@@ -122,7 +122,7 @@ def build_graph():
     g.add_node("retrieve", retrieve)
     g.add_node("grade_documents", grade_documents)
     g.add_node("rewrite_query", rewrite_query)
-    g.add_node("web_fallback", web_fallback_search)
+    g.add_node("web_fallback_node", web_fallback_search)
     g.add_node("generate", generate)
     g.add_node("check_hallucination", check_hallucination)
 
@@ -132,11 +132,11 @@ def build_graph():
     g.add_conditional_edges("grade_documents", route_after_grading, {
         "generate":    "generate",
         "rewrite":     "rewrite_query",
-        "web_fallback":"web_fallback",
+        "web_fallback_node":"web_fallback_node",
     })
 
     g.add_edge("rewrite_query", "retrieve")
-    g.add_edge("web_fallback", "generate")
+    g.add_edge("web_fallback_node", "generate")
     g.add_edge("generate", "check_hallucination")
 
     g.add_conditional_edges("check_hallucination", route_after_hallucination_check, {
